@@ -26,7 +26,11 @@ export class PostsService {
   public async findAll(paginationQuery: PaginationQueryDto): Promise<Post[]> {
     const { limit, offset } = paginationQuery;
 
-    return await this.postModel.find().skip(offset).limit(limit).exec();
+    return await this.postModel
+      .find({ deleted: false })
+      .skip(offset)
+      .limit(limit)
+      .exec();
   }
 
   public async findOne(postId: string): Promise<Post> {

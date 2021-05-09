@@ -1,7 +1,8 @@
 .head-title {
-  background-color: red;
+  background-color: #333;
   padding: 5px;
   min-height: 200px;
+  width: 100%;
   .title {
     font-size: 70px;
     text-align: start;
@@ -16,13 +17,16 @@
     color: #fff;
   }
 }
-.posts-wrapper{
-  background-color: blue;
-  flex: 1 1 auto;
-  flex-direction: row;
-  padding:15px;
-  ul{
+.posts-wrapper {
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px;
+  ul {
     list-style: none;
-    flex: 1 1 auto;
+    width: 100%;
+    margin: 4px;
+    padding: 4px;
   }
 }

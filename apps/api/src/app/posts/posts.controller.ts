@@ -15,7 +15,7 @@ import { PostsService } from './posts.service';
 import { CreatePostDto, UpdatePostDto } from './dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 
-@Controller('api/posts')
+@Controller('posts')
 export class PostsController {
   constructor(private postsService: PostsService) {}
 

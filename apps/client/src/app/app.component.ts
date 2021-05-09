@@ -1,21 +1,27 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {IPost, Message} from '@hn-feed/api-interfaces';
+import { Component, OnInit } from '@angular/core';
+import { IPost } from '@hn-feed/api-interfaces';
+import { PostsService } from './posts/posts.service';
 
 @Component({
   selector: 'hn-feed-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+export class AppComponent implements OnInit {
+  constructor(private postsService: PostsService) {}
   posts: IPost[] = [];
 
   ngOnInit() {
-    this.http.get<IPost[]>('/api/api/posts').subscribe((result)=>{
-      console.log(result);
-      this.posts  =  result;
-    })
+    this.getAllPost();
+  }
+
+  private getAllPost() {
+    this.postsService.getAllPost().subscribe((result) => {
+      this.posts = result;
+    });
+  }
+
+  deletePost() {
+    this.getAllPost();
   }
 }

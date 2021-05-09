@@ -1,0 +1,39 @@
+.post-wrapper {
+  display: block;
+  overflow: auto;
+  font-family: 'Comic Sans MS', 'Comic Sans', sans-serif;
+  padding: 25px 100px 25px 100px;
+  margin: 10px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  a {
+    color: #333;
+    text-decoration: none;
+    font-size: 13pt;
+  }
+  span {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+  .trash-icon {
+    cursor: pointer;
+    display: none;
+  }
+  .author {
+    color: #999;
+  }
+  .action-section {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    float: right;
+  }
+  &:hover {
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    .trash-icon {
+      display: inline-flex;
+      margin-left: 30px;
+    }
+  }
+}
