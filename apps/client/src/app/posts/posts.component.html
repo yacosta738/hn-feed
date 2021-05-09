@@ -2,7 +2,7 @@
   <a [href]="post.url" target="_blank">{{ post.title }}</a>
   <span class="author"> - {{ post.author }} - </span>
   <div class="action-section">
-    <span>{{ post.createdAt }}</span>
+    <span>{{ post.createdAt | postDate }}</span>
     <i class="trash-icon" (click)="deletePost(post._id)"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
