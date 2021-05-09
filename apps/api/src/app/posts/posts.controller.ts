@@ -36,7 +36,13 @@ export class PostsController {
     }
     return res.status(HttpStatus.OK).json(post);
   }
-
+  @Get('/collect/data')
+  public async collectData(@Res() res) {
+    await this.postsService.collectDataTask();
+    return res.status(HttpStatus.OK).json({
+      message: 'Start collect data',
+    });
+  }
   @Post()
   public async addPost(@Res() res, @Body() createPostDto: CreatePostDto) {
     try {

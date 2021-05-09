@@ -24,10 +24,12 @@ export class PostsService {
   ) {}
 
   public async findAll(paginationQuery: PaginationQueryDto): Promise<Post[]> {
-    const { limit, offset } = paginationQuery;
-
+    let { limit, offset } = paginationQuery;
+    limit = Number(limit);
+    offset = Number(offset);
     return await this.postModel
       .find({ deleted: false })
+      .sort({createdAt: -1})
       .skip(offset)
       .limit(limit)
       .exec();
@@ -89,7 +91,7 @@ export class PostsService {
   }
 
   @Cron(CronExpression.EVERY_HOUR)
-  handleCron() {
+  collectDataTask() {
     this.logger.debug('Collect data from service api algolia ');
     const fromAPI = this.fetchDataFromAPI();
     fromAPI.subscribe(
@@ -99,7 +101,6 @@ export class PostsService {
   }
 
   private populateDataBase(hits: []) {
-    console.log(hits.length);
     hits.forEach(async (hit: any) => {
       // verify if the post is in database.
       const posts = await this.postModel
@@ -113,7 +114,7 @@ export class PostsService {
           url: hit.story_url ? hit.story_url : hit.url,
           author: hit.author,
           deleted: false,
-          createdAt: hit.created_at,
+          createdAt: new Date(hit.created_at),
         });
         this.logger.debug(`Inserted post ${post}`);
       }

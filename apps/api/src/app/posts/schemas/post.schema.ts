@@ -19,7 +19,7 @@ export class Post extends Document {
   deleted: boolean;
 
   @Prop()
-  createdAt: string;
+  createdAt: Date;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

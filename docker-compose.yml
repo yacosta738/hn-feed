@@ -4,6 +4,6 @@ services:
   mongodb:
     image: mongo:4.4.4
     environment:
-      - MONGODB_DATABASE="nest"
+      - MONGODB_DATABASE="hnfeed"
     ports:
       - 27017:27017

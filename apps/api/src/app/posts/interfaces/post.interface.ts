@@ -6,5 +6,5 @@ export interface IPost extends Document {
   url: string; // story_url or url
   author: string;
   deleted: boolean;
-  createdAt: string;
+  createdAt: Date;
 }

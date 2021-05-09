@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PostsService } from './posts.service';
+import {IPost} from "@hn-feed/api-interfaces";
 
 describe('PostsService', () => {
   let service: PostsService;

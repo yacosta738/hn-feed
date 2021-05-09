@@ -8,5 +8,9 @@ export interface IPost {
   url: string;
   author: string;
   deleted: boolean;
-  createdAt: string;
+  createdAt: Date;
+}
+export interface PaginationQuery {
+  limit: number;
+  offset: number;
 }

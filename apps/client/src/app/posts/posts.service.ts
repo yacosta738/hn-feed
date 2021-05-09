@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { IPost } from '@hn-feed/api-interfaces';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { IPost, PaginationQuery } from '@hn-feed/api-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +8,16 @@ import { IPost } from '@hn-feed/api-interfaces';
 export class PostsService {
   constructor(private http: HttpClient) {}
 
-  public getAllPost() {
-    return this.http.get<IPost[]>('/api/posts');
+  public getAllPost(paginationQuery?: PaginationQuery) {
+    const params: HttpParams = new HttpParams();
+    const options = paginationQuery
+      ? {
+          params: new HttpParams({
+            fromString: `offset=${paginationQuery?.offset}&limit=${paginationQuery?.limit}`,
+          }),
+        }
+      : {};
+    return this.http.get<IPost[]>('/api/posts', options);
   }
   public getPost(postId: string) {
     return this.http.get<IPost[]>(`/api/posts/${postId}`);
@@ -22,5 +30,9 @@ export class PostsService {
   }
   public deletePost(postId: string) {
     return this.http.delete(`/api/posts/${postId}`);
+  }
+
+  startCollectData() {
+    return this.http.get('/api/posts/collect/data')
   }
 }

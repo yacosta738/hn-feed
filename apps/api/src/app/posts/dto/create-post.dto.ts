@@ -27,8 +27,7 @@ export class CreatePostDto {
   @IsBoolean()
   readonly deleted: boolean;
 
-  @IsString()
-  @MaxLength(40)
+
   @IsNotEmpty()
-  readonly createdAt: string;
+  readonly createdAt: Date;
 }

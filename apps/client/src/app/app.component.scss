@@ -30,3 +30,14 @@
     padding: 4px;
   }
 }
+.pagination-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  float: right;
+  padding: 10px;
+  margin: 10px;
+  .pagination-controls {
+    margin: 20px;
+  }
+}

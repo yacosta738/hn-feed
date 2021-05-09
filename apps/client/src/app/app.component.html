@@ -10,3 +10,10 @@
     </li>
   </ul>
 </div>
+<div *ngIf="posts.length===0">
+  <p>No data to show. Do you want update from Hacker news? Click in the button below</p>
+  <button (click)="collectData()">Update from Hacker News</button>
+</div>
+<div class="pagination-wrapper">
+  <button *ngIf="posts.length > 0" class="pagination-controls" (click)="showMore()">Show More ⬇</button>
+</div>
