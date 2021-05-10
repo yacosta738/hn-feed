@@ -9,7 +9,6 @@ export class PostsService {
   constructor(private http: HttpClient) {}
 
   public getAllPost(paginationQuery?: PaginationQuery) {
-    const params: HttpParams = new HttpParams();
     const options = paginationQuery
       ? {
           params: new HttpParams({
@@ -33,6 +32,6 @@ export class PostsService {
   }
 
   startCollectData() {
-    return this.http.get('/api/posts/collect/data')
+    return this.http.get('/api/posts/collect/data');
   }
 }
