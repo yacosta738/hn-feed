@@ -4,7 +4,7 @@ WORKDIR /app
 
 # install and cache app dependencies
 COPY package.json yarn.lock ./
-RUN npm install
+RUN npm install && npm run build
 
 # add app
 COPY ./dist/ ./
