@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "client",
+  "builds": [
+    { "src": "/dist/apps/api/main.js", "use": "@now/node" },
+    { "src": "/dist/apps/client/*", "use": "@now/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/dist/apps/api/main.js" },
+    { "handle": "filesystem" },
+    { "src": "/assets/(.*)", "dest": "/dist/apps/client/assets/$1"},
+    { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/client/$1.$2" },
+    { "src": "/(.*)", "dest": "/dist/apps/client/index.html" }
+  ]
+}
