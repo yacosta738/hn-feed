@@ -28,10 +28,4 @@ import { join } from 'path';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
-  private readonly logger = new Logger(AppModule.name);
-  constructor() {
-    this.logger.log('<<<<<<<<<<<<<<<<<<<<<process.env.MONGODB_URI>>>>>>>>>>>>>>>>>>>>>');
-   this.logger.log(process.env.MONGODB_URI);
-  }
-}
+export class AppModule {}
