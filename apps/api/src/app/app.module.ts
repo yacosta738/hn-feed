@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import {Logger, Module} from '@nestjs/common';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -29,8 +29,9 @@ import { join } from 'path';
   providers: [AppService],
 })
 export class AppModule {
+  private readonly logger = new Logger(AppModule.name);
   constructor() {
-    console.log('<<<<<<<<<<<<<<<<<<<<<process.env.MONGODB_URI>>>>>>>>>>>>>>>>>>>>>');
-    console.log(process.env.MONGODB_URI);
+    this.logger.log('<<<<<<<<<<<<<<<<<<<<<process.env.MONGODB_URI>>>>>>>>>>>>>>>>>>>>>');
+   this.logger.log(process.env.MONGODB_URI);
   }
 }
