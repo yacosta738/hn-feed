@@ -28,4 +28,9 @@ import { join } from 'path';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('<<<<<<<<<<<<<<<<<<<<<process.env.MONGODB_URI>>>>>>>>>>>>>>>>>>>>>');
+    console.log(process.env.MONGODB_URI);
+  }
+}
