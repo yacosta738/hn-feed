@@ -10,7 +10,7 @@ import { ScheduleModule } from '@nestjs/schedule';
   imports: [
     MongooseModule.forRootAsync({
       useFactory: () => ({
-        uri: 'mongodb://127.0.0.1:27017/hnfeed',
+        uri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/hnfeed',
         useNewUrlParser: true,
         useFindAndModify: false,
         useCreateIndex: true,
