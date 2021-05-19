@@ -9,7 +9,7 @@
     "start": "node dist/apps/api/main",
     "start:client": "ng serve",
     "start:server": "nx -- serve api",
-    "build": "nx build api --prod",
+    "build": "nx build client --prod && nx build api --prod",
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
